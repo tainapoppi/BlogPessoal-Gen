@@ -1,6 +1,5 @@
 package com.gerenation.blogpessoal.model;
 
-
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -18,14 +17,14 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "tb_temas")
 public class Tema {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull(message = "O Atributo Descrição é obrigatório")
 	private String descricao;
-
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
